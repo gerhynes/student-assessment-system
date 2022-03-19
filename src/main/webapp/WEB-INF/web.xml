@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>GetCourseController</servlet-name>
+    <display-name>GetCourseController</display-name>
+    <description></description>
+    <servlet-class>com.example.web.GetCourseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCourseController</servlet-name>
+    <url-pattern>/getCourse</url-pattern>
+  </servlet-mapping>
 </web-app>

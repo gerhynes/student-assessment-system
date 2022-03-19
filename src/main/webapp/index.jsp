@@ -5,11 +5,11 @@
 <body>
 <nav class="navbar navbar-dark bg-dark mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Student Assessment</a>
+    <a class="navbar-brand" href="/student-assessment-system">Student Assessment</a>
   </div>
 </nav>
 <div class="container">
-    <h1 class="text-center mt-5 mb-4">Welcome to the Student Assessment System</h1>
+    <h1 class="text-center mt-5 mb-5">Welcome to the Student Assessment System</h1>
     <div class="text-center">
         <a class="btn btn-primary mx-4" href="/student-assessment-system/register.jsp">Register</a>
         <a class="btn btn-primary mx-4" href="/student-assessment-system/login.jsp">Log In</a>
