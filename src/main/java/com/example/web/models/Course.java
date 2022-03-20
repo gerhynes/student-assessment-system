@@ -1,9 +1,12 @@
-package com.example.web.model;
+package com.example.web.models;
 
 public class Course {
     private int id;
+    private String courseCode;
     private String name;
     private int instructorId;
+    private int semester;
+    private int assessmentId;
 
     public int getId() {
         return id;
@@ -11,6 +14,14 @@ public class Course {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 
     public String getName() {
@@ -27,6 +38,22 @@ public class Course {
 
     public void setInstructorId(int instructorId) {
         this.instructorId = instructorId;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    public int getAssessmentId() {
+        return assessmentId;
+    }
+
+    public void setAssessmentId(int assessmentId) {
+        this.assessmentId = assessmentId;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.example.web;
 
 import com.example.web.dao.CourseDao;
-import com.example.web.model.Course;
+import com.example.web.models.Course;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -16,7 +16,9 @@ public class GetCourseController extends HttpServlet {
         CourseDao dao = new CourseDao();
         Course course = dao.getCourse(courseId);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("showCourse.jsp");
-        requestDispatcher.forward(request, response);
+        HttpSession session = request.getSession();
+        session.setAttribute("course", course);
+
+        response.sendRedirect("showCourse.jsp");
     }
 }
