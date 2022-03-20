@@ -8,6 +8,15 @@ public class Course {
     private int semester;
     private int assessmentId;
 
+    public Course(int id, String courseCode, String name, int instructorId, int semester, int assessmentId) {
+        this.id = id;
+        this.courseCode = courseCode;
+        this.name = name;
+        this.instructorId = instructorId;
+        this.semester = semester;
+        this.assessmentId = assessmentId;
+    }
+
     public int getId() {
         return id;
     }
@@ -58,6 +67,12 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course id=" + id + ", name=" + name + ", instructor_id=" + instructorId;
+        return "Course " +
+                "id=" + id +
+                ", courseCode='" + courseCode + '\'' +
+                ", name='" + name + '\'' +
+                ", instructorId=" + instructorId +
+                ", semester=" + semester +
+                ", assessmentId=" + assessmentId;
     }
 }

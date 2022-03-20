@@ -10,8 +10,20 @@
     <description></description>
     <servlet-class>com.example.web.GetCourseController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetCoursesController</servlet-name>
+    <display-name>GetCoursesController</display-name>
+    <description></description>
+    <servlet-class>com.example.web.GetCoursesController</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCoursesController</servlet-name>
+    <url-pattern>/getCourses</url-pattern>
+  </servlet-mapping>
 </web-app>
+
+
