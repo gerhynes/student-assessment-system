@@ -22,6 +22,12 @@
     <description></description>
     <servlet-class>com.example.web.RegisterUser</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginUser</servlet-name>
+    <display-name>LoginUser</display-name>
+    <description></description>
+    <servlet-class>com.example.web.LoginUser</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
@@ -33,6 +39,10 @@
   <servlet-mapping>
     <servlet-name>RegisterUser</servlet-name>
     <url-pattern>/RegisterUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginUser</servlet-name>
+    <url-pattern>/LoginUser</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

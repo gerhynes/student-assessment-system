@@ -57,6 +57,25 @@ public class UserDao {
         return users;
     }
 
+    public User validateUser(String enteredName, String enteredPassword) {
+        User validatedUser = null;
+        try (Connection connection = getConnection()) {
+            String sql = "SELECT * from users WHERE username = '" + enteredName + "' AND password = '" + enteredPassword + "';";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String role = resultSet.getString("role");
+                String password = resultSet.getString("password");
+                validatedUser = new User(id, name, role, password);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return validatedUser;
+    }
+
     public void createUser(User user) {
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
