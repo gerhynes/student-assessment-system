@@ -41,7 +41,7 @@ public class AssessmentCriteriaDao {
                 int assignment3 = resultSet.getInt("assignment3");
                 int midterm = resultSet.getInt("midterm");
                 int finalExam = resultSet.getInt("final");
-                criteria.add(new AssessmentCriteria(id, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam))
+                criteria.add(new AssessmentCriteria(id, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -78,5 +78,86 @@ public class AssessmentCriteriaDao {
             System.out.println(e);
         }
         return assessmentCriteria;
+    }
+
+    public void createAssessmentCriteria(AssessmentCriteria assessmentCriteria){
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+
+            int courseId = assessmentCriteria.getCourseId();
+            int quiz1 = assessmentCriteria.getQuiz1();
+            int quiz2 = assessmentCriteria.getQuiz2();
+            int quiz3 = assessmentCriteria.getQuiz3();
+            int quiz4 = assessmentCriteria.getQuiz4();
+            int quiz5 = assessmentCriteria.getQuiz5();
+            int assignment1 = assessmentCriteria.getAssignment1();
+            int assignment2 = assessmentCriteria.getAssignment2();
+            int assignment3 = assessmentCriteria.getAssignment3();
+            int midterm = assessmentCriteria.getMidterm();
+            int finalExam = assessmentCriteria.getFinalExam();
+
+            String sql = "INSERT INTO assessment_criteria (course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final ) VALUES (" + courseId +
+                    "," + quiz1 +
+                    "," + quiz2 +
+                    "," + quiz3 +
+                    "," + quiz4 +
+                    "," + quiz5 +
+                    "," + assignment1 +
+                    "," + assignment2 +
+                    "," + assignment3 +
+                    "," + midterm +
+                    "," + finalExam +
+                    ");";
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public boolean updateAssessmentCriteria(AssessmentCriteria assessmentCriteria) {
+        boolean rowUpdated = false;
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+            int id = assessmentCriteria.getId();
+            int courseId = assessmentCriteria.getCourseId();
+            int quiz1 = assessmentCriteria.getQuiz1();
+            int quiz2 = assessmentCriteria.getQuiz2();
+            int quiz3 = assessmentCriteria.getQuiz3();
+            int quiz4 = assessmentCriteria.getQuiz4();
+            int quiz5 = assessmentCriteria.getQuiz5();
+            int assignment1 = assessmentCriteria.getAssignment1();
+            int assignment2 = assessmentCriteria.getAssignment2();
+            int assignment3 = assessmentCriteria.getAssignment3();
+            int midterm = assessmentCriteria.getMidterm();
+            int finalExam = assessmentCriteria.getFinalExam();
+
+            rowUpdated = statement.executeUpdate("UPDATE assessment_criteria SET id = " + id +
+                    ", course_id = " + courseId +
+                    ", quiz1 = " + quiz1 +
+                    ", quiz2 = " + quiz2 +
+                    ", quiz3 = " + quiz3 +
+                    ", quiz4 = " + quiz4 +
+                    ", quiz5 = " + quiz5 +
+                    ", assignment1 = " + assignment1 +
+                    ", assignment2 = " + assignment2 +
+                    ", assignment3 = " + assignment3 +
+                    ", midterm = " + midterm +
+                    ", final = " + finalExam +
+                    " WHERE id = " + id) > 0;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rowUpdated;
+    }
+
+    public boolean deleteAssessmentCriteria(int criteriaId) {
+        boolean rowDeleted = false;
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+            rowDeleted = statement.executeUpdate("DELETE FROM assessment_criteria WHERE id = " + criteriaId) > 0;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return rowDeleted;
     }
 }

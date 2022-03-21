@@ -14,6 +14,20 @@ public class AssessmentCriteria {
     private int midterm;
     private int finalExam;
 
+    public AssessmentCriteria(int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
+        this.courseId = courseId;
+        this.quiz1 = quiz1;
+        this.quiz2 = quiz2;
+        this.quiz3 = quiz3;
+        this.quiz4 = quiz4;
+        this.quiz5 = quiz5;
+        this.assignment1 = assignment1;
+        this.assignment2 = assignment2;
+        this.assignment3 = assignment3;
+        this.midterm = midterm;
+        this.finalExam = finalExam;
+    }
+
     public AssessmentCriteria(int id, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
         this.id = id;
         this.courseId = courseId;
