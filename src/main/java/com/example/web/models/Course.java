@@ -8,6 +8,14 @@ public class Course {
     private int semester;
     private int assessmentId;
 
+    public Course(String courseCode, String name, int instructorId, int semester, int assessmentId) {
+        this.courseCode = courseCode;
+        this.name = name;
+        this.instructorId = instructorId;
+        this.semester = semester;
+        this.assessmentId = assessmentId;
+    }
+
     public Course(int id, String courseCode, String name, int instructorId, int semester, int assessmentId) {
         this.id = id;
         this.courseCode = courseCode;
