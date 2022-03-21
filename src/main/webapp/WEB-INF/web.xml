@@ -28,6 +28,12 @@
     <description></description>
     <servlet-class>com.example.web.LoginUser</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PopulateAdminDashboard</servlet-name>
+    <display-name>PopulateAdminDashboard</display-name>
+    <description></description>
+    <servlet-class>com.example.web.PopulateAdminDashboard</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
@@ -43,6 +49,10 @@
   <servlet-mapping>
     <servlet-name>LoginUser</servlet-name>
     <url-pattern>/LoginUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PopulateAdminDashboard</servlet-name>
+    <url-pattern>/PopulateAdminDashboard</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

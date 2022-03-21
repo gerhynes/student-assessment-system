@@ -3,6 +3,7 @@ package com.example.web;
 import com.example.web.dao.UserDao;
 import com.example.web.models.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,10 +37,14 @@ public class RegisterUser extends HttpServlet {
         session.setAttribute("user", user);
 
         if (user.getRole().equals("admin")) {
-            response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
+            // Call PopulateAdminDashboardServlet
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/PopulateAdminDashboard");
+            dispatcher.forward(request, response);
         } else if (user.getRole().equals("instructor")) {
+            // Call PopulateInstructorDashboardServlet
             response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");
         } else if (user.getRole().equals("student")) {
+            // Call PopulateStudentDashboardServlet
             response.sendRedirect(request.getContextPath() + "/studentDashboard.jsp");
         }
     }

@@ -25,40 +25,40 @@
         <div class="col-md-6 mx-auto">
             <h2>Create/Edit Course</h2>
             <c:if test="${course != null}">
-            <form action="update" method="post">
+            <form action="UpdateCourse" method="post">
                 </c:if>
                 <c:if test="${course == null}">
-                <form action="insert" method="post">
+                <form action="CreateCourse" method="post">
                     </c:if>
                     <c:if test="${course != null}">
                         <input type="hidden" name="id" value="<c:out value='${course.id}' />"/>
                     </c:if>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="courseCode">Course Code</label>
                         <input class="form-control" name="courseCode" type="text"
                                value="<c:out value='${course.courseCode}'/>" id="courseCode" required="required"/>
                     </div>
-                    <div class="form-group">
-                        <label for="name">Name</label>
+                    <div class="mb-3">
+                        <label for="name">Course Name</label>
                         <input class="form-control" name="name" type="text"
                                value="<c:out value='${course.name}'/>" id="name" required="required"/>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="instructorId">Instructor ID</label>
                         <input class="form-control" name="instructorId" type="text"
                                value="<c:out value='${course.instructorId}'/>" id="instructorId"/>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="semester">Semester</label>
                         <input class="form-control" name="semester" type="text"
                                value="<c:out value='${course.semester}'/>" id="semester" required="required"/>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="assessmentId">Assessment ID</label>
                         <input class="form-control" name="assessmentId" type="text"
                                value="<c:out value='${course.assessmentId}'/>" id="assessmentId"/>
                     </div>
-                    <div>
+                    <div class="mb-3 d-grid">
                         <button class="btn btn-primary">
                             Save
                         </button>
