@@ -5,12 +5,6 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>CourseServlet</servlet-name>
-    <display-name>CourseServlet</display-name>
-    <description></description>
-    <servlet-class>com.example.web.CourseServlet</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>GetCourseController</servlet-name>
     <display-name>GetCourseController</display-name>
     <description></description>
@@ -22,10 +16,12 @@
     <description></description>
     <servlet-class>com.example.web.GetCoursesController</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>CourseServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterUser</servlet-name>
+    <display-name>RegisterUser</display-name>
+    <description></description>
+    <servlet-class>com.example.web.RegisterUser</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
@@ -34,6 +30,17 @@
     <servlet-name>GetCoursesController</servlet-name>
     <url-pattern>/getCourses</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegisterUser</servlet-name>
+    <url-pattern>/RegisterUser</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/error.jsp</location>
+  </error-page>
 </web-app>
 
 

@@ -12,11 +12,11 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">Sign into the Student Assessment System</h1>
-            <form class="card p-4">
+            <form class="card p-4" action="login" method="post">
               <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Use the same email you registered with</div>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp">
+                <div id="nameHelp" class="form-text">Use the same name you registered with</div>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>

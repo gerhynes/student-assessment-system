@@ -38,6 +38,6 @@ public class StudentAssessmentDao {
         } catch(Exception e) {
             System.out.println(e);
         }
-        return assessmentCriteria;
+        return studentAssessment;
     }
 }

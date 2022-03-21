@@ -46,6 +46,7 @@ public class CourseServlet extends HttpServlet {
                     updateCourse(request, response);
                     break;
                 default:
+                    System.out.println("Default action");
                     listCourses(request, response);
                     break;
             }
