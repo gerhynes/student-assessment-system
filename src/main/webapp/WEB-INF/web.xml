@@ -34,6 +34,18 @@
     <description></description>
     <servlet-class>com.example.web.PopulateAdminDashboard</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PopulateInstructorDashboard</servlet-name>
+    <display-name>PopulateInstructorDashboard</display-name>
+    <description></description>
+    <servlet-class>com.example.web.PopulateInstructorDashboard</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PopulateStudentDashboard</servlet-name>
+    <display-name>PopulateStudentDashboard</display-name>
+    <description></description>
+    <servlet-class>com.example.web.PopulateStudentDashboard</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
@@ -54,6 +66,14 @@
     <servlet-name>PopulateAdminDashboard</servlet-name>
     <url-pattern>/PopulateAdminDashboard</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PopulateInstructorDashboard</servlet-name>
+    <url-pattern>/PopulateInstructorDashboard</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PopulateStudentDashboard</servlet-name>
+    <url-pattern>/PopulateStudentDashboard</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
@@ -62,5 +82,3 @@
     <location>/error.jsp</location>
   </error-page>
 </web-app>
-
-
