@@ -22,7 +22,7 @@ public class CourseDao {
         Course course = null;
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses WHERE id =" + courseId);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses WHERE id = " + courseId);
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String courseCode = resultSet.getString("course_code");
@@ -43,7 +43,7 @@ public class CourseDao {
 
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses;");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String courseCode = resultSet.getString("course_code");
@@ -79,14 +79,18 @@ public class CourseDao {
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             int id = course.getId();
+            String courseCode = course.getCourseCode();
             String name = course.getName();
             int instructorId = course.getInstructorId();
             int semester = course.getSemester();
             int assessmentId = course.getAssessmentId();
             rowUpdated = statement.executeUpdate("UPDATE courses SET id = " + id +
+                    ", course_code = " + courseCode +
                     ", name = " + name +
-                    ", instructorId = " + instructorId +
-                    ", semester = " + semester + ", assessmentId = " + assessmentId + " WHERE id = " + id) > 0;
+                    ", instructor_id = " + instructorId +
+                    ", semester = " + semester +
+                    ", assessment_id = " + assessmentId +
+                    " WHERE id = " + id) > 0;
         } catch (Exception e) {
             System.out.println(e);
         }

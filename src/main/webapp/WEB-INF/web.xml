@@ -5,6 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+    <servlet-name>CourseServlet</servlet-name>
+    <display-name>CourseServlet</display-name>
+    <description></description>
+    <servlet-class>com.example.web.CourseServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>GetCourseController</servlet-name>
     <display-name>GetCourseController</display-name>
     <description></description>
@@ -16,6 +22,10 @@
     <description></description>
     <servlet-class>com.example.web.GetCoursesController</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>CourseServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetCourseController</servlet-name>
     <url-pattern>/getCourse</url-pattern>
