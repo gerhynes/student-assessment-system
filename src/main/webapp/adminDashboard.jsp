@@ -34,7 +34,16 @@
     <div class="row mb-5">
         <div class="col-md-6 mx-auto">
             <h2>Current Courses</h2>
-            <p>An ID of 0 means an instructor/assessment criteria has not been assigned to the course.</p>
+            <div class="alert alert-info" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+                <span>An ID of 0 means an instructor has not yet been assigned to a course.</span>
+            </div>
+            <div class="mb-3">
+                <a href="newCourseForm.jsp" class="btn btn-primary">Create Course</a>
+            </div>
             <table class="table table-responsive">
                 <thead>
                 <tr>
@@ -42,7 +51,6 @@
                     <th scope="col" class="align-top">Course Name</th>
                     <th scope="col" class="align-top">Semester</th>
                     <th scope="col" class="align-top">Instructor ID</th>
-                    <th scope="col" class="align-top">Assessment Criteria ID</th>
                     <th scope="col" class="align-top">Edit</th>
                     <th scope="col" class="align-top">Delete</th>
                 </tr>
@@ -55,7 +63,6 @@
                                 "<td>" + course.getName() + "</td>\n" +
                                 "<td>" + course.getSemester() + "</td>\n" +
                                 "<td>" + course.getInstructorId() + "</td>\n" +
-                                "<td>" + course.getAssessmentId() + "</td>\n" +
                                 "<td>\n" +
                                 "<form action=\"PopulateCourseForm\" method=\"post\">" +
                                 "<input type=\"hidden\" name=\"id\" value=\""+ course.getId() + "\"/>" +

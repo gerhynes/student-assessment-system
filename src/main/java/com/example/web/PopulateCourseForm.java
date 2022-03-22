@@ -32,7 +32,7 @@ public class PopulateCourseForm extends HttpServlet {
 
         session.setAttribute("currentCourse", course);
 
-        response.sendRedirect(request.getContextPath() + "/courseForm.jsp");
+        response.sendRedirect(request.getContextPath() + "/editCourseForm.jsp");
     }
 }
 

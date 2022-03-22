@@ -1,11 +1,5 @@
 <%@ page import="com.example.web.models.Course" %>
-<%@ page import="com.example.web.models.User" %><%--
-  Created by IntelliJ IDEA.
-  User: Gerard
-  Date: 21/03/2022
-  Time: 11:55
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.example.web.models.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>

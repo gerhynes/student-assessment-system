@@ -68,7 +68,7 @@ public class CourseDao {
             int instructorId = course.getInstructorId();
             int semester = course.getSemester();
             int assessmentId = course.getAssessmentId();
-            statement.executeUpdate("INSERT INTO courses (course_code, name, instructor_id, semester, assessment_id) VALUES (" + courseCode + "," + name + "," + instructorId + "," + semester + "," + assessmentId + ");");
+            statement.executeUpdate("INSERT INTO courses (course_code, name, instructor_id, semester, assessment_id) VALUES ('" + courseCode + "','" + name + "'," + instructorId + "," + semester + "," + assessmentId + ");");
         } catch (Exception e) {
             System.out.println(e);
         }
