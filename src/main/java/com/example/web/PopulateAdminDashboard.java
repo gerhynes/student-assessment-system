@@ -19,6 +19,12 @@ public class PopulateAdminDashboard extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Populating admin dashbaord");
         CourseDao courseDao = new CourseDao();
         UserDao userDao = new UserDao();
         ArrayList<Course> courses = courseDao.getAllCourses();
@@ -29,10 +35,5 @@ public class PopulateAdminDashboard extends HttpServlet {
         session.setAttribute("users", users);
 
         response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
     }
 }

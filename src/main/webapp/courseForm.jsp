@@ -25,9 +25,11 @@
         <div class="col-md-6 mx-auto">
             <h2>Create/Edit Course</h2>
             <c:if test="${course != null}">
+            <h2>Edit Course</h2>
             <form action="UpdateCourse" method="post">
                 </c:if>
                 <c:if test="${course == null}">
+                    <h2>Create Course</h2>
                 <form action="CreateCourse" method="post">
                     </c:if>
                     <c:if test="${course != null}">

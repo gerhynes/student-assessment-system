@@ -5,18 +5,6 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>GetCourseController</servlet-name>
-    <display-name>GetCourseController</display-name>
-    <description></description>
-    <servlet-class>com.example.web.GetCourseController</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>GetCoursesController</servlet-name>
-    <display-name>GetCoursesController</display-name>
-    <description></description>
-    <servlet-class>com.example.web.GetCoursesController</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>RegisterUser</servlet-name>
     <display-name>RegisterUser</display-name>
     <description></description>
@@ -46,14 +34,6 @@
     <description></description>
     <servlet-class>com.example.web.PopulateStudentDashboard</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>GetCourseController</servlet-name>
-    <url-pattern>/getCourse</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>GetCoursesController</servlet-name>
-    <url-pattern>/getCourses</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RegisterUser</servlet-name>
     <url-pattern>/RegisterUser</url-pattern>

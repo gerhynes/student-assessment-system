@@ -38,14 +38,16 @@ public class RegisterUser extends HttpServlet {
 
         if (user.getRole().equals("admin")) {
             // Call PopulateAdminDashboardServlet
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/PopulateAdminDashboard");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateAdminDashboard");
             dispatcher.forward(request, response);
         } else if (user.getRole().equals("instructor")) {
             // Call PopulateInstructorDashboardServlet
-            response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateInstructorDashboard");
+            dispatcher.forward(request, response);
         } else if (user.getRole().equals("student")) {
             // Call PopulateStudentDashboardServlet
-            response.sendRedirect(request.getContextPath() + "/studentDashboard.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateStudentDashboard");
+            dispatcher.forward(request, response);
         }
     }
 }

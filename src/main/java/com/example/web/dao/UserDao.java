@@ -60,7 +60,7 @@ public class UserDao {
     public User validateUser(String enteredName, String enteredPassword) {
         User validatedUser = null;
         try (Connection connection = getConnection()) {
-            String sql = "SELECT * from users WHERE username = '" + enteredName + "' AND password = '" + enteredPassword + "';";
+            String sql = "SELECT * from users WHERE name = '" + enteredName + "' AND password = '" + enteredPassword + "';";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
@@ -73,6 +73,7 @@ public class UserDao {
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println("validated user " + validatedUser.toString());
         return validatedUser;
     }
 
