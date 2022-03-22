@@ -101,9 +101,9 @@ public class UserDao {
             String role = user.getRole();
             String password = user.getPassword();
             rowUpdated = statement.executeUpdate("UPDATE users SET id = " + id +
-                    ", name = " + name +
-                    ", role = " + role +
-                    ", password = " + password +
+                    ", name = \'" + name + "\'" +
+                    ", role = \'" + role + "\'" +
+                    ", password = \'" + password + "\'" +
                     " WHERE id = " + id) > 0;
         } catch (Exception e) {
             System.out.println(e);

@@ -85,8 +85,8 @@ public class CourseDao {
             int semester = course.getSemester();
             int assessmentId = course.getAssessmentId();
             rowUpdated = statement.executeUpdate("UPDATE courses SET id = " + id +
-                    ", course_code = " + courseCode +
-                    ", name = " + name +
+                    ", course_code = \'" + courseCode + "\'" +
+                    ", name = \'" + name + "\'" +
                     ", instructor_id = " + instructorId +
                     ", semester = " + semester +
                     ", assessment_id = " + assessmentId +

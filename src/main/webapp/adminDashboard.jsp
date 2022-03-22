@@ -10,7 +10,6 @@
 <body>
 <%
     User user = (User) session.getAttribute("user");
-    out.print(user.toString());
 
     ArrayList<Course> courses = (ArrayList<Course>) session.getAttribute("courses");
 
@@ -58,12 +57,16 @@
                                 "<td>" + course.getInstructorId() + "</td>\n" +
                                 "<td>" + course.getAssessmentId() + "</td>\n" +
                                 "<td>\n" +
-                                "<form action=\"EditCourse\" method=\"post\">" +
+                                "<form action=\"PopulateCourseForm\" method=\"post\">" +
+                                "<input type=\"hidden\" name=\"id\" value=\""+ course.getId() + "\"/>" +
                                 "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Edit</button>\n" +
                                 "</form>" +
                                 "</td>\n" +
                                 "<td>\n" +
-                                "<button class=\"btn btn-sm btn-primary\">Delete</button>\n" +
+                                "<form action=\"DeleteCourse\" method=\"post\">" +
+                                "<input type=\"hidden\" name=\"id\" value=\""+ course.getId() + "\"/>" +
+                                "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Delete</button>\n" +
+                                "</form>" +
                                 "</td>\n" +
                                 "</tr>");
                     }
