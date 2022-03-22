@@ -38,7 +38,7 @@
           <label for="courseId">Course ID</label>
           <input class="form-control" name="courseId" type="text" id="courseId" required="required"/>
         </div>
-        <h3 class="fs-5">Quizzes (Up to 5. Total can be between 10% and 20%. Set as 0 if not used)</h3>
+        <h3 class="fs-5">Quizzes (Up to 5. Total can be between 10% and 20%. Set as 0 if not used, or not yet graded)</h3>
         <div class="mb-3">
           <label for="quiz1">Quiz1</label>
           <input class="form-control" name="quiz1" type="number" id="quiz1" required="required"/>
@@ -59,7 +59,7 @@
           <label for="quiz5">Quiz5</label>
           <input class="form-control" name="quiz5" type="number" id="quiz5" required="required"/>
         </div>
-        <h3 class="fs-5">Assignments (Up to 3. Total can be between 10% and 20%. Set as 0 if not used)</h3>
+        <h3 class="fs-5">Assignments (Up to 3. Total can be between 10% and 20%. Set as 0 if not used, or not yet graded)</h3>
         <div class="mb-3">
           <label for="assignment1">Assignment1</label>
           <input class="form-control" name="assignment1" type="number" id="assignment1" required="required"/>
@@ -73,11 +73,11 @@
           <input class="form-control" name="assignment3" type="number" id="assignment3" required="required"/>
         </div>
         <div class="mb-3">
-          <label for="midterm">Midterm Exam Must be 30%</label>
+          <label for="midterm">Midterm Exam (Must be worth 30%)</label>
           <input class="form-control" name="midterm" type="number" id="midterm" required="required"/>
         </div>
         <div class="mb-3">
-          <label for="finalExam">Final Exam Must be 50%</label>
+          <label for="finalExam">Final Exam (Must be worth 50%)</label>
           <input class="form-control" name="finalExam" type="number" id="finalExam" required="required"/>
         </div>
         <div class="mb-3 d-grid">

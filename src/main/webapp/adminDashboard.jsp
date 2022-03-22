@@ -31,8 +31,8 @@
     </div>
 </nav>
 <div class="container">
-    <div class="row mb-5">
-        <div class="col-md-6 mx-auto">
+    <div class="row mb-3">
+        <div class="col-md-9 col-lg-8 mx-auto">
             <h2>Current Courses</h2>
             <div class="alert alert-info" role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -44,52 +44,54 @@
             <div class="mb-3">
                 <a href="newCourseForm.jsp" class="btn btn-primary">Create Course</a>
             </div>
-            <table class="table table-responsive">
-                <thead>
-                <tr>
-                    <th scope="col" class="align-top">Course Code</th>
-                    <th scope="col" class="align-top">Course Name</th>
-                    <th scope="col" class="align-top">Semester</th>
-                    <th scope="col" class="align-top">Instructor ID</th>
-                    <th scope="col" class="align-top">Edit</th>
-                    <th scope="col" class="align-top">Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    for (Course course : courses) {
-                        out.print("<tr>\n" +
-                                "<th scope=\"row\">" + course.getCourseCode() + "</th>\n" +
-                                "<td>" + course.getName() + "</td>\n" +
-                                "<td>" + course.getSemester() + "</td>\n" +
-                                "<td>" + course.getInstructorId() + "</td>\n" +
-                                "<td>\n" +
-                                "<form action=\"PopulateCourseForm\" method=\"post\">" +
-                                "<input type=\"hidden\" name=\"id\" value=\""+ course.getId() + "\"/>" +
-                                "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Edit</button>\n" +
-                                "</form>" +
-                                "</td>\n" +
-                                "<td>\n" +
-                                "<form action=\"DeleteCourse\" method=\"post\">" +
-                                "<input type=\"hidden\" name=\"id\" value=\""+ course.getId() + "\"/>" +
-                                "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Delete</button>\n" +
-                                "</form>" +
-                                "</td>\n" +
-                                "</tr>");
-                    }
-                %>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="align-top">Course Code</th>
+                        <th scope="col" class="align-top">Course Name</th>
+                        <th scope="col" class="align-top">Semester</th>
+                        <th scope="col" class="align-top">Instructor ID</th>
+                        <th scope="col" class="align-top">Edit</th>
+                        <th scope="col" class="align-top">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (Course course : courses) {
+                            out.print("<tr>\n" +
+                                    "<th scope=\"row\">" + course.getCourseCode() + "</th>\n" +
+                                    "<td>" + course.getName() + "</td>\n" +
+                                    "<td>" + course.getSemester() + "</td>\n" +
+                                    "<td>" + course.getInstructorId() + "</td>\n" +
+                                    "<td>\n" +
+                                    "<form action=\"PopulateCourseForm\" method=\"post\">" +
+                                    "<input type=\"hidden\" name=\"id\" value=\"" + course.getId() + "\"/>" +
+                                    "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Edit</button>\n" +
+                                    "</form>" +
+                                    "</td>\n" +
+                                    "<td>\n" +
+                                    "<form action=\"DeleteCourse\" method=\"post\">" +
+                                    "<input type=\"hidden\" name=\"id\" value=\"" + course.getId() + "\"/>" +
+                                    "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Delete</button>\n" +
+                                    "</form>" +
+                                    "</td>\n" +
+                                    "</tr>");
+                        }
+                    %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-6 mx-auto">
             <h2>Available Instructors</h2>
-            <ul>
+            <ul class="list-group">
                 <%
                     for (User singleUser : users) {
                         if (singleUser.getRole().equals("instructor")) {
-                            out.print("<li>" + singleUser.getName() + " (ID: " + singleUser.getId() + ")</li>");
+                            out.print("<li class=\"list-group-item\">" + singleUser.getName() + " (ID: " + singleUser.getId() + ")</li>");
                         }
                     }
                 %>

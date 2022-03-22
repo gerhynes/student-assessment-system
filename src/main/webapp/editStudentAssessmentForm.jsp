@@ -34,7 +34,7 @@
             <form action="UpdateStudentAssessment" method="post">
                 <input type="hidden" name="id" value="<%= assessment.getId() %>"/>
                 <div class="mb-3">
-                    <label for="studentId">Course ID</label>
+                    <label for="studentId">Student ID</label>
                     <input class="form-control" name="studentId" type="text"
                            value="<%= assessment.getStudentId() %>" id="studentId" required="required"/>
                 </div>

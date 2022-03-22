@@ -42,7 +42,7 @@ public class PopulateInstructorDashboard extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("courses", courses);
         session.setAttribute("criteria", criteria);
-        session.setAttribute("assessments", assessments);
+        session.setAttribute("studentAssessments", assessments);
 
         response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");
     }

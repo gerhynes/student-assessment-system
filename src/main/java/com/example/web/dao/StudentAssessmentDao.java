@@ -94,7 +94,8 @@ public class StudentAssessmentDao {
             int midterm = studentAssessment.getMidterm();
             int finalExam = studentAssessment.getFinalExam();
 
-            String sql = "INSERT INTO student_assessment (student_id, course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final) VALUES (" + studentId +
+            String sql = "INSERT INTO student_assessment (student_id, course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final) VALUES ("
+                    + studentId +
                     "," + courseId +
                     "," + quiz1 +
                     "," + quiz2 +
@@ -113,7 +114,8 @@ public class StudentAssessmentDao {
         }
     }
 
-    public void updateStudentAssessment(StudentAssessment studentAssessment) {
+    public boolean updateStudentAssessment(StudentAssessment studentAssessment) {
+        boolean rowUpdated = false;
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
 
@@ -131,24 +133,25 @@ public class StudentAssessmentDao {
             int midterm = studentAssessment.getMidterm();
             int finalExam = studentAssessment.getFinalExam();
 
-            String sql = "UPDATE assessment_criteria SET id = " + id +
-                    ", student_id =" + studentId +
-                    ", course_id =" + courseId +
+            String sql = "UPDATE student_assessment SET student_id = " + studentId +
+                    ", course_id = " + courseId +
                     ", quiz1 = " + quiz1 +
-                    ", quiz2 =" + quiz2 +
-                    ", quiz3 =" + quiz3 +
-                    ", quiz4 =" + quiz4 +
-                    ", quiz5 =" + quiz5 +
-                    ", assignment1 =" + assignment1 +
-                    ", assignment2 =" + assignment2 +
-                    ", assignment3 =" + assignment3 +
-                    ", midterm =" + midterm +
-                    ", final =" + finalExam +
-                    ");";
-            statement.executeUpdate(sql);
+                    ", quiz2 = " + quiz2 +
+                    ", quiz3 = " + quiz3 +
+                    ", quiz4 = " + quiz4 +
+                    ", quiz5 = " + quiz5 +
+                    ", assignment1 = " + assignment1 +
+                    ", assignment2 = " + assignment2 +
+                    ", assignment3 = " + assignment3 +
+                    ", midterm = " + midterm +
+                    ", final = " + finalExam +
+                    " WHERE id = " + id;
+            System.out.println(sql);
+            rowUpdated = statement.executeUpdate(sql) > 0;
         } catch (Exception e) {
             System.out.println(e);
         }
+        return rowUpdated;
     }
 
     public boolean deleteStudentAssessment(int assessmentId) {
