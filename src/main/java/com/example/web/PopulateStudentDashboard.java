@@ -21,6 +21,11 @@ public class PopulateStudentDashboard extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get courses
         CourseDao courseDao = new CourseDao();
         ArrayList<Course> courses = courseDao.getAllCourses();
@@ -35,10 +40,5 @@ public class PopulateStudentDashboard extends HttpServlet {
         session.setAttribute("assessments", assessments);
 
         response.sendRedirect(request.getContextPath() + "/studentDashboard.jsp");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
     }
 }

@@ -12,6 +12,11 @@
 </nav>
 <div class="container">
     <h1 class="text-center mt-5 mb-5">Welcome to the Student Assessment System</h1>
+    <div class="text-center mb-5">
+    <p>Admins: manage courses and instructors</p>
+    <p>Instructors: manage your courses, assessment criteria and student assessments</p>
+    <p>Students:, manage your courses and check your grades</p>
+    </div>
     <div class="text-center">
         <a class="btn btn-primary mx-4" href="/student-assessment-system/register.jsp">Register</a>
         <a class="btn btn-primary mx-4" href="/student-assessment-system/login.jsp">Log In</a>

@@ -1,7 +1,9 @@
 package com.example.web;
 
+import com.example.web.dao.AssessmentCriteriaDao;
 import com.example.web.dao.CourseDao;
-import com.example.web.models.User;
+import com.example.web.models.AssessmentCriteria;
+import com.example.web.models.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteCourse", value = "/DeleteCourse")
-public class DeleteCourse extends HttpServlet {
+@WebServlet(name = "PopulateAssessmentCriteriaForm", value = "/PopulateAssessmentCriteriaForm")
+public class PopulateAssessmentCriteriaForm extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,25 +23,17 @@ public class DeleteCourse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CourseDao courseDao = new CourseDao();
         HttpSession session = request.getSession();
+        AssessmentCriteriaDao assessmentCriteriaDao = new AssessmentCriteriaDao();
 
-        // Find and delete course
+
         int id = Integer.parseInt(request.getParameter("id"));
-        courseDao.deleteCourse(id);
 
-        // Set updated courses into session
-        session.setAttribute("courses", courseDao.getAllCourses());
+        AssessmentCriteria assessmentCriteria = assessmentCriteriaDao.getAssessmentCriteria(id);
 
-        // Get current user
-        User user = (User) session.getAttribute("user");
+        session.setAttribute("currentCriteria", assessmentCriteria);
 
-        // Redirect based off user's role
-        if (user.getRole().equals("admin")) {
-            response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
-        } else if (user.getRole().equals("instructor")) {
-            response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");
-        }
+        response.sendRedirect(request.getContextPath() + "/editAssessmentCriteriaForm.jsp");
     }
 }
 

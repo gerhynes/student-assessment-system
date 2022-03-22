@@ -73,7 +73,6 @@ public class UserDao {
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.println("validated user " + validatedUser.toString());
         return validatedUser;
     }
 

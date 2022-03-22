@@ -21,6 +21,7 @@ public class PopulateCourseForm extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         CourseDao courseDao = new CourseDao();
 
         int id = Integer.parseInt(request.getParameter("id"));
@@ -29,7 +30,6 @@ public class PopulateCourseForm extends HttpServlet {
 
         Course course = courseDao.getCourse(id);
 
-        HttpSession session = request.getSession();
         session.setAttribute("currentCourse", course);
 
         response.sendRedirect(request.getContextPath() + "/courseForm.jsp");
