@@ -2,6 +2,7 @@ package com.example.web;
 
 import com.example.web.dao.UserDao;
 import com.example.web.models.User;
+import com.example.web.utils.PasswordUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,13 +25,18 @@ public class RegisterUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserDao userDao = new UserDao();
+        PasswordUtils passwordUtils = new PasswordUtils();
 
         String name = request.getParameter("name");
         String role = request.getParameter("role");
-//      In a production application passwords would be hashed before being saved
         String password = request.getParameter("password");
 
-        User user = new User(name, role, password);
+        // Hash password before saving
+        byte[] salt = "Here goes nothing".getBytes();
+        String hashedPassword = passwordUtils.hashPassword(password, salt);
+        User user = new User(name, role, hashedPassword);
+
+        // Save user to database
         userDao.createUser(user);
 
         // Run user through validation to get user's id from database

@@ -89,6 +89,13 @@
     <section class="row mb-5">
         <div class="col-md-9 col-lg-8 mx-auto">
             <h2>Assessment Criteria</h2>
+            <div class="alert alert-info d-flex align-items-center" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-info-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+                <span>The same assessment criteria can be assigned to multiple courses.</span>
+            </div>
             <div class="mb-3">
                 <a href="newAssessmentCriteriaForm.jsp" class="btn btn-primary">Create Assessment Criteria</a>
             </div>
@@ -139,9 +146,9 @@
                                             "<td>" + singleCriteria.getAssignment1() + "</td>\n" +
                                             "<td>" + singleCriteria.getAssignment2() + "</td>\n" +
                                             "<td>" + singleCriteria.getAssignment3() + "</td>\n" +
-                                            "<td>" + singleCriteria.getMidterm() + "</td>\n" +
-                                            "<td>" + singleCriteria.getFinalExam() + "</td>\n" +
-                                            "<td>100</td>" +
+                                            "<td>" + singleCriteria.getMidterm() + "%</td>\n" +
+                                            "<td>" + singleCriteria.getFinalExam() + "%</td>\n" +
+                                            "<td>100%</td>" +
                                             "<td>\n" +
                                             "<form action=\"PopulateAssessmentCriteriaForm\" method=\"post\">" +
                                             "<input type=\"hidden\" name=\"id\" value=\"" + singleCriteria.getId() + "\"/>" +

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.example.web.models.Course;
 import com.example.web.models.User;
+import com.example.web.utils.PasswordUtils;
 
 public class UserDao {
 
@@ -62,9 +63,15 @@ public class UserDao {
     }
 
     public User validateUser(String enteredName, String enteredPassword) {
+        PasswordUtils passwordUtils = new PasswordUtils();
         User validatedUser = null;
+
+        // Hash password before checking for user
+        byte[] salt = "Here goes nothing".getBytes();
+        String hashedPassword = passwordUtils.hashPassword(enteredPassword, salt);
+
         try (Connection connection = getConnection()) {
-            String sql = "SELECT * from users WHERE name = '" + enteredName + "' AND password = '" + enteredPassword + "';";
+            String sql = "SELECT * from users WHERE name = '" + enteredName + "' AND password = '" + hashedPassword + "';";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
