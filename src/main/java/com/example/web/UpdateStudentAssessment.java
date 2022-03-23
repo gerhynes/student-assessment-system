@@ -29,8 +29,6 @@ public class UpdateStudentAssessment extends HttpServlet {
         HttpSession session = request.getSession();
         StudentAssessmentDao studentAssessmentDao = new StudentAssessmentDao();
 
-        System.out.println("Going to update student assessment");
-
         // Get form inputs and use to update assessment criteria
         int id = Integer.parseInt(request.getParameter("id"));
         int studentId = Integer.parseInt(request.getParameter("studentId"));
@@ -47,8 +45,6 @@ public class UpdateStudentAssessment extends HttpServlet {
         int finalExam = Integer.parseInt(request.getParameter("finalExam"));
 
         StudentAssessment studentAssessment = new StudentAssessment(id, studentId, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam);
-
-        System.out.println(studentAssessment.toString());
 
         studentAssessmentDao.updateStudentAssessment(studentAssessment);
 

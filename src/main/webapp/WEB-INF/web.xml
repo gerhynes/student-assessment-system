@@ -17,6 +17,12 @@
     <servlet-class>com.example.web.LoginUser</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>LogoutUser</servlet-name>
+    <display-name>LogoutUser</display-name>
+    <description></description>
+    <servlet-class>com.example.web.LogoutUser</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>PopulateCourseForm</servlet-name>
     <display-name>PopulateCourseForm</display-name>
     <description></description>
@@ -107,6 +113,10 @@
   <servlet-mapping>
     <servlet-name>LoginUser</servlet-name>
     <url-pattern>/LoginUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutUser</servlet-name>
+    <url-pattern>/LogoutUser</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>PopulateCourseForm</servlet-name>

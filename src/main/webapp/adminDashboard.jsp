@@ -31,6 +31,11 @@
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
         </div>
+        <div>
+            <form class="mb-0" action="LogoutUser" method="post">
+                <button type="submit" class="btn btn-light">Log Out</button>
+            </form>
+        </div>
     </div>
 </nav>
 <div class="container">
@@ -42,7 +47,7 @@
                      class="bi bi-info-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
                     <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
                 </svg>
-                <span>An ID of 0 means an instructor has not yet been assigned to a course.</span>
+                <span>An ID of 0 means you have not yet assigned an instructor to a course.</span>
             </div>
             <div class="mb-3">
                 <a href="newCourseForm.jsp" class="btn btn-primary">Create Course</a>

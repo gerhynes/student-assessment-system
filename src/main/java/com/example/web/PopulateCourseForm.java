@@ -26,8 +26,6 @@ public class PopulateCourseForm extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        System.out.println("Current course id:" + id);
-
         Course course = courseDao.getCourse(id);
 
         session.setAttribute("currentCourse", course);

@@ -36,6 +36,11 @@
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
         </div>
+        <div>
+            <form class="mb-0" action="LogoutUser" method="post">
+                <button type="submit" class="btn btn-light">Log Out</button>
+            </form>
+        </div>
     </div>
 </nav>
 <div class="container">

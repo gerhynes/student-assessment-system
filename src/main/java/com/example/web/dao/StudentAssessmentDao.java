@@ -30,7 +30,7 @@ public class StudentAssessmentDao {
 
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessment;");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessments;");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int studentId = resultSet.getInt("student_id");
@@ -58,7 +58,7 @@ public class StudentAssessmentDao {
 
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessment WHERE id =" + assessmentId);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessments WHERE id =" + assessmentId);
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int studentId = resultSet.getInt("student_id");
@@ -98,7 +98,7 @@ public class StudentAssessmentDao {
             int midterm = studentAssessment.getMidterm();
             int finalExam = studentAssessment.getFinalExam();
 
-            String sql = "INSERT INTO student_assessment (student_id, course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final) VALUES ("
+            String sql = "INSERT INTO student_assessments (student_id, course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final) VALUES ("
                     + studentId +
                     "," + courseId +
                     "," + quiz1 +
@@ -137,7 +137,7 @@ public class StudentAssessmentDao {
             int midterm = studentAssessment.getMidterm();
             int finalExam = studentAssessment.getFinalExam();
 
-            String sql = "UPDATE student_assessment SET student_id = " + studentId +
+            String sql = "UPDATE student_assessments SET student_id = " + studentId +
                     ", course_id = " + courseId +
                     ", quiz1 = " + quiz1 +
                     ", quiz2 = " + quiz2 +
@@ -162,7 +162,7 @@ public class StudentAssessmentDao {
         boolean rowDeleted = false;
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            rowDeleted = statement.executeUpdate("DELETE FROM student_assessment WHERE id = " + assessmentId) > 0;
+            rowDeleted = statement.executeUpdate("DELETE FROM student_assessments WHERE id = " + assessmentId) > 0;
         } catch (Exception e) {
             System.out.println(e);
         }

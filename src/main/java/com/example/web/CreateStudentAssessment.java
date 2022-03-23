@@ -43,7 +43,7 @@ public class CreateStudentAssessment extends HttpServlet {
         studentAssessmentDao.createStudentAssessment(studentAssessment);
 
         // Set updated assessments into session
-        session.setAttribute("assessments", studentAssessmentDao.getAllStudentAssessments());
+        session.setAttribute("studentAssessments", studentAssessmentDao.getAllStudentAssessments());
 
         response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");
     }
