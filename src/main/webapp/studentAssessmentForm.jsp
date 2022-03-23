@@ -1,5 +1,5 @@
-<%@ page import="com.example.web.models.AssessmentCriteria" %>
-<%@ page import="com.example.web.models.User" %>
+<%@ page import="com.example.models.AssessmentCriteria" %>
+<%@ page import="com.example.models.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,14 +12,24 @@
 %>
 <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/student-assessment-system">Student Assessment</a>
+        <h1>
+            <a class="navbar-brand" href="/student-assessment-system">Student Assessment</a>
+        </h1>
         <div>
+            <span class="navbar-text">
+            <% out.print("ID: " + user.getId() + ""); %>
+            </span>
             <span class="navbar-text">
             <% out.print(user.getName()); %>
             </span>
             <span class="navbar-text">
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
+        </div>
+        <div>
+            <form class="mb-0" action="LogoutUser" method="post">
+                <button type="submit" class="btn btn-light">Log Out</button>
+            </form>
         </div>
     </div>
 </nav>

@@ -1,9 +1,9 @@
 package com.example.web;
 
-import com.example.web.dao.CourseDao;
-import com.example.web.dao.UserDao;
-import com.example.web.models.Course;
-import com.example.web.models.User;
+import com.example.dao.CourseDao;
+import com.example.dao.UserDao;
+import com.example.models.Course;
+import com.example.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +26,12 @@ public class PopulateAdminDashboard extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CourseDao courseDao = new CourseDao();
         UserDao userDao = new UserDao();
+
+        // Get all courses and users (filter users for instructors in jsp)
         ArrayList<Course> courses = courseDao.getAllCourses();
         ArrayList<User> users = userDao.getAllUsers();
 
+        // Set courses and users into session
         HttpSession session = request.getSession();
         session.setAttribute("courses", courses);
         session.setAttribute("users", users);

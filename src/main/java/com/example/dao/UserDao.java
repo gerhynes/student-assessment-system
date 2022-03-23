@@ -1,11 +1,10 @@
-package com.example.web.dao;
+package com.example.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.example.web.models.Course;
-import com.example.web.models.User;
-import com.example.web.utils.PasswordUtils;
+import com.example.models.User;
+import com.example.utils.PasswordUtils;
 
 public class UserDao {
 
@@ -13,8 +12,8 @@ public class UserDao {
         Connection connection = null;
         String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
         String dbUser = "root";
-        String dbPassword = "thomasmerton";
-        // String dbPassword = "rootpasswordgiven";
+//        String dbPassword = "thomasmerton";
+        String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);

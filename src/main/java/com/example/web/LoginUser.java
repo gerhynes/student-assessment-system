@@ -1,7 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.UserDao;
-import com.example.web.models.User;
+import com.example.dao.UserDao;
+import com.example.models.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,10 +28,13 @@ public class LoginUser extends HttpServlet {
         String username = request.getParameter("name");
         String password = request.getParameter("password");
 
+        // Validate user
         User validUser = userDao.validateUser(username, password);
 
+        // Set user into session
         session.setAttribute("user", validUser);
 
+        // Redirect based off user's role
         if (validUser.getRole().equals("admin")) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateAdminDashboard");
             dispatcher.forward(request, response);

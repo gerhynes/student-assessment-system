@@ -1,11 +1,11 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.dao.StudentAssessmentDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.StudentAssessment;
+import com.example.dao.AssessmentCriteriaDao;
+import com.example.dao.CourseDao;
+import com.example.dao.StudentAssessmentDao;
+import com.example.models.AssessmentCriteria;
+import com.example.models.Course;
+import com.example.models.StudentAssessment;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,20 +26,17 @@ public class PopulateInstructorDashboard extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Get courses
+        HttpSession session = request.getSession();
         CourseDao courseDao = new CourseDao();
-        ArrayList<Course> courses = courseDao.getAllCourses();
-
-        // Get assessment criteria
         AssessmentCriteriaDao assessmentCriteriaDao = new AssessmentCriteriaDao();
-        ArrayList<AssessmentCriteria> criteria = assessmentCriteriaDao.getAllAssessmentCriteria();
-
-        // Get student assessments
         StudentAssessmentDao studentAssessmentDao = new StudentAssessmentDao();
+
+        // Get courses, assessment criteria and student assessments
+        ArrayList<Course> courses = courseDao.getAllCourses();
+        ArrayList<AssessmentCriteria> criteria = assessmentCriteriaDao.getAllAssessmentCriteria();
         ArrayList<StudentAssessment> assessments = studentAssessmentDao.getAllStudentAssessments();
 
-
-        HttpSession session = request.getSession();
+        // Set them into session
         session.setAttribute("courses", courses);
         session.setAttribute("criteria", criteria);
         session.setAttribute("studentAssessments", assessments);

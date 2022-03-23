@@ -1,7 +1,6 @@
-package com.example.web.dao;
+package com.example.dao;
 
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
+import com.example.models.StudentAssessment;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,14 +8,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class AssessmentCriteriaDao {
+public class StudentAssessmentDao {
 
     protected Connection getConnection() {
         Connection connection = null;
         String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
         String dbUser = "root";
-        String dbPassword = "thomasmerton";
-        // String dbPassword = "rootpasswordgiven";
+//        String dbPassword = "thomasmerton";
+        String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -26,14 +25,15 @@ public class AssessmentCriteriaDao {
         return connection;
     }
 
-    public ArrayList<AssessmentCriteria> getAllAssessmentCriteria() {
-        ArrayList<AssessmentCriteria> criteria = new ArrayList<>();
+    public ArrayList<StudentAssessment> getAllStudentAssessments() {
+        ArrayList<StudentAssessment> assessments = new ArrayList<>();
 
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM assessment_criteria;");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessments;");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
+                int studentId = resultSet.getInt("student_id");
                 int courseId = resultSet.getInt("course_id");
                 int quiz1 = resultSet.getInt("quiz1");
                 int quiz2 = resultSet.getInt("quiz2");
@@ -45,25 +45,23 @@ public class AssessmentCriteriaDao {
                 int assignment3 = resultSet.getInt("assignment3");
                 int midterm = resultSet.getInt("midterm");
                 int finalExam = resultSet.getInt("final");
-                criteria.add(new AssessmentCriteria(id, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam));
+                assessments.add(new StudentAssessment(id, studentId, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
-        return criteria;
+        return assessments;
     }
 
+    public StudentAssessment getStudentAssessment(int assessmentId) {
+        StudentAssessment studentAssessment = null;
 
-    public AssessmentCriteria getAssessmentCriteria(int criteriaId) {
-        AssessmentCriteria assessmentCriteria = null;
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_assessment", "root", "thomasmerton");
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM assessment_criteria WHERE id =" + criteriaId);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM student_assessments WHERE id =" + assessmentId);
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
+                int studentId = resultSet.getInt("student_id");
                 int courseId = resultSet.getInt("course_id");
                 int quiz1 = resultSet.getInt("quiz1");
                 int quiz2 = resultSet.getInt("quiz2");
@@ -75,32 +73,34 @@ public class AssessmentCriteriaDao {
                 int assignment3 = resultSet.getInt("assignment3");
                 int midterm = resultSet.getInt("midterm");
                 int finalExam = resultSet.getInt("final");
-                assessmentCriteria = new AssessmentCriteria(id, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam);
+                studentAssessment = new StudentAssessment(id, studentId, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam);
             }
-            connection.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return assessmentCriteria;
+        return studentAssessment;
     }
 
-    public void createAssessmentCriteria(AssessmentCriteria assessmentCriteria){
+    public void createStudentAssessment(StudentAssessment studentAssessment) {
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
 
-            int courseId = assessmentCriteria.getCourseId();
-            int quiz1 = assessmentCriteria.getQuiz1();
-            int quiz2 = assessmentCriteria.getQuiz2();
-            int quiz3 = assessmentCriteria.getQuiz3();
-            int quiz4 = assessmentCriteria.getQuiz4();
-            int quiz5 = assessmentCriteria.getQuiz5();
-            int assignment1 = assessmentCriteria.getAssignment1();
-            int assignment2 = assessmentCriteria.getAssignment2();
-            int assignment3 = assessmentCriteria.getAssignment3();
-            int midterm = assessmentCriteria.getMidterm();
-            int finalExam = assessmentCriteria.getFinalExam();
+            int studentId = studentAssessment.getStudentId();
+            int courseId = studentAssessment.getCourseId();
+            int quiz1 = studentAssessment.getQuiz1();
+            int quiz2 = studentAssessment.getQuiz2();
+            int quiz3 = studentAssessment.getQuiz3();
+            int quiz4 = studentAssessment.getQuiz4();
+            int quiz5 = studentAssessment.getQuiz5();
+            int assignment1 = studentAssessment.getAssignment1();
+            int assignment2 = studentAssessment.getAssignment2();
+            int assignment3 = studentAssessment.getAssignment3();
+            int midterm = studentAssessment.getMidterm();
+            int finalExam = studentAssessment.getFinalExam();
 
-            String sql = "INSERT INTO assessment_criteria (course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final ) VALUES (" + courseId +
+            String sql = "INSERT INTO student_assessments (student_id, course_id, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, final) VALUES ("
+                    + studentId +
+                    "," + courseId +
                     "," + quiz1 +
                     "," + quiz2 +
                     "," + quiz3 +
@@ -118,24 +118,27 @@ public class AssessmentCriteriaDao {
         }
     }
 
-    public boolean updateAssessmentCriteria(AssessmentCriteria assessmentCriteria) {
+    public boolean updateStudentAssessment(StudentAssessment studentAssessment) {
         boolean rowUpdated = false;
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            int id = assessmentCriteria.getId();
-            int courseId = assessmentCriteria.getCourseId();
-            int quiz1 = assessmentCriteria.getQuiz1();
-            int quiz2 = assessmentCriteria.getQuiz2();
-            int quiz3 = assessmentCriteria.getQuiz3();
-            int quiz4 = assessmentCriteria.getQuiz4();
-            int quiz5 = assessmentCriteria.getQuiz5();
-            int assignment1 = assessmentCriteria.getAssignment1();
-            int assignment2 = assessmentCriteria.getAssignment2();
-            int assignment3 = assessmentCriteria.getAssignment3();
-            int midterm = assessmentCriteria.getMidterm();
-            int finalExam = assessmentCriteria.getFinalExam();
 
-            rowUpdated = statement.executeUpdate("UPDATE assessment_criteria SET course_id = " + courseId +
+            int id = studentAssessment.getId();
+            int studentId = studentAssessment.getStudentId();
+            int courseId = studentAssessment.getCourseId();
+            int quiz1 = studentAssessment.getQuiz1();
+            int quiz2 = studentAssessment.getQuiz2();
+            int quiz3 = studentAssessment.getQuiz3();
+            int quiz4 = studentAssessment.getQuiz4();
+            int quiz5 = studentAssessment.getQuiz5();
+            int assignment1 = studentAssessment.getAssignment1();
+            int assignment2 = studentAssessment.getAssignment2();
+            int assignment3 = studentAssessment.getAssignment3();
+            int midterm = studentAssessment.getMidterm();
+            int finalExam = studentAssessment.getFinalExam();
+
+            String sql = "UPDATE student_assessments SET student_id = " + studentId +
+                    ", course_id = " + courseId +
                     ", quiz1 = " + quiz1 +
                     ", quiz2 = " + quiz2 +
                     ", quiz3 = " + quiz3 +
@@ -146,18 +149,19 @@ public class AssessmentCriteriaDao {
                     ", assignment3 = " + assignment3 +
                     ", midterm = " + midterm +
                     ", final = " + finalExam +
-                    " WHERE id = " + id) > 0;
+                    " WHERE id = " + id;
+            rowUpdated = statement.executeUpdate(sql) > 0;
         } catch (Exception e) {
             System.out.println(e);
         }
         return rowUpdated;
     }
 
-    public boolean deleteAssessmentCriteria(int criteriaId) {
+    public boolean deleteStudentAssessment(int assessmentId) {
         boolean rowDeleted = false;
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-            rowDeleted = statement.executeUpdate("DELETE FROM assessment_criteria WHERE id = " + criteriaId) > 0;
+            rowDeleted = statement.executeUpdate("DELETE FROM student_assessments WHERE id = " + assessmentId) > 0;
         } catch (Exception e) {
             System.out.println(e);
         }

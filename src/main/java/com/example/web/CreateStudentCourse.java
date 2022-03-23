@@ -1,7 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.StudentCourseDao;
-import com.example.web.models.StudentCourse;
+import com.example.dao.StudentCourseDao;
+import com.example.models.StudentCourse;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +31,7 @@ public class CreateStudentCourse extends HttpServlet {
         StudentCourse studentCourse = new StudentCourse(studentId, courseId);
         studentCourseDao.createStudentCourse(studentCourse);
 
-        // Set updated courses into session
+        // Set updated student courses into session
         session.setAttribute("studentCourses", studentCourseDao.getAllStudentCourses());
 
         response.sendRedirect(request.getContextPath() + "/studentDashboard.jsp");

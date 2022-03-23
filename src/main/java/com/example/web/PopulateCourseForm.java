@@ -1,7 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.CourseDao;
-import com.example.web.models.Course;
+import com.example.dao.CourseDao;
+import com.example.models.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +24,11 @@ public class PopulateCourseForm extends HttpServlet {
         HttpSession session = request.getSession();
         CourseDao courseDao = new CourseDao();
 
+        // Get specific course
         int id = Integer.parseInt(request.getParameter("id"));
-
         Course course = courseDao.getCourse(id);
 
+        // Set course into session
         session.setAttribute("currentCourse", course);
 
         response.sendRedirect(request.getContextPath() + "/editCourseForm.jsp");

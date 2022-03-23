@@ -1,10 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.User;
+import com.example.dao.AssessmentCriteriaDao;
+import com.example.models.AssessmentCriteria;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

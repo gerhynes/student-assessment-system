@@ -1,8 +1,8 @@
 package com.example.web;
 
-import com.example.web.dao.CourseDao;
-import com.example.web.models.Course;
-import com.example.web.models.User;
+import com.example.dao.CourseDao;
+import com.example.models.Course;
+import com.example.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +42,7 @@ public class UpdateCourse extends HttpServlet {
         // Get current user
         User user = (User) session.getAttribute("user");
 
+        // Redirect based off user's role
         if (user.getRole().equals("admin")) {
             response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
         } else if (user.getRole().equals("instructor")) {

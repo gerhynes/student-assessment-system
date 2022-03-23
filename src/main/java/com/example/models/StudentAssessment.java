@@ -1,7 +1,8 @@
-package com.example.web.models;
+package com.example.models;
 
-public class AssessmentCriteria {
+public class StudentAssessment {
     private int id;
+    private int studentId;
     private int courseId;
     private int quiz1;
     private int quiz2;
@@ -14,7 +15,8 @@ public class AssessmentCriteria {
     private int midterm;
     private int finalExam;
 
-    public AssessmentCriteria(int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
+    public StudentAssessment(int studentId, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
+        this.studentId = studentId;
         this.courseId = courseId;
         this.quiz1 = quiz1;
         this.quiz2 = quiz2;
@@ -28,8 +30,9 @@ public class AssessmentCriteria {
         this.finalExam = finalExam;
     }
 
-    public AssessmentCriteria(int id, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
+    public StudentAssessment(int id, int studentId, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
         this.id = id;
+        this.studentId = studentId;
         this.courseId = courseId;
         this.quiz1 = quiz1;
         this.quiz2 = quiz2;
@@ -49,6 +52,14 @@ public class AssessmentCriteria {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public int getCourseId() {
@@ -141,8 +152,9 @@ public class AssessmentCriteria {
 
     @Override
     public String toString() {
-        return "AssessmentCriteria " +
+        return "StudentAssessment " +
                 "id=" + id +
+                ", studentId=" + studentId +
                 ", courseId=" + courseId +
                 ", quiz1=" + quiz1 +
                 ", quiz2=" + quiz2 +

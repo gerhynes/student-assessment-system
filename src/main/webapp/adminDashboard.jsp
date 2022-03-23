@@ -1,6 +1,6 @@
-<%@ page import="com.example.web.models.User" %>
+<%@ page import="com.example.models.User" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.web.models.Course" %>
+<%@ page import="com.example.models.Course" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -107,8 +107,5 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
 </body>
 </html>

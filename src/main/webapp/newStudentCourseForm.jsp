@@ -1,11 +1,11 @@
-<%@ page import="com.example.web.models.Course" %>
-<%@ page import="com.example.web.models.User" %>
+<%@ page import="com.example.models.Course" %>
+<%@ page import="com.example.models.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Student Assessment</title>
+    <title>Student Assessment System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -30,6 +30,11 @@
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
         </div>
+        <div>
+            <form class="mb-0" action="LogoutUser" method="post">
+                <button type="submit" class="btn btn-light">Log Out</button>
+            </form>
+        </div>
     </div>
 </nav>
 <div class="container">
@@ -39,7 +44,7 @@
             <form action="CreateStudentCourse" method="post">
                 <div class="mb-3">
                     <label for="studentId">Student ID</label>
-                    <input class="form-control" name="studentId" type="text" id="studentId" value=\"<%= user.getId() %>"\"" required="required"/>
+                    <input class="form-control" name="studentId" type="text" id="studentId" value="<%= user.getId() %>" required="required"/>
                 </div>
                 <div class="mb-3">
                     <label for="courseId" class="form-label">Course</label>

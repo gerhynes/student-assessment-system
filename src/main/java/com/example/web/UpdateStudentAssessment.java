@@ -1,12 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.dao.StudentAssessmentDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.StudentAssessment;
-import com.example.web.models.User;
+import com.example.dao.StudentAssessmentDao;
+import com.example.models.StudentAssessment;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +24,7 @@ public class UpdateStudentAssessment extends HttpServlet {
         HttpSession session = request.getSession();
         StudentAssessmentDao studentAssessmentDao = new StudentAssessmentDao();
 
-        // Get form inputs and use to update assessment criteria
+        // Get form inputs and use to update student assessment
         int id = Integer.parseInt(request.getParameter("id"));
         int studentId = Integer.parseInt(request.getParameter("studentId"));
         int courseId = Integer.parseInt(request.getParameter("courseId"));
@@ -45,10 +40,9 @@ public class UpdateStudentAssessment extends HttpServlet {
         int finalExam = Integer.parseInt(request.getParameter("finalExam"));
 
         StudentAssessment studentAssessment = new StudentAssessment(id, studentId, courseId, quiz1, quiz2, quiz3, quiz4, quiz5, assignment1, assignment2, assignment3, midterm, finalExam);
-
         studentAssessmentDao.updateStudentAssessment(studentAssessment);
 
-        // Set updated student assessment into session
+        // Get updated student assessments and set into session
         session.setAttribute("studentAssessments", studentAssessmentDao.getAllStudentAssessments());
 
         response.sendRedirect(request.getContextPath() + "/instructorDashboard.jsp");

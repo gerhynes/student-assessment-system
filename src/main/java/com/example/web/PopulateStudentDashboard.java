@@ -1,13 +1,11 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.dao.StudentAssessmentDao;
-import com.example.web.dao.StudentCourseDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.StudentAssessment;
-import com.example.web.models.StudentCourse;
+import com.example.dao.CourseDao;
+import com.example.dao.StudentAssessmentDao;
+import com.example.dao.StudentCourseDao;
+import com.example.models.Course;
+import com.example.models.StudentAssessment;
+import com.example.models.StudentCourse;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,15 +31,12 @@ public class PopulateStudentDashboard extends HttpServlet {
         StudentAssessmentDao studentAssessmentDao = new StudentAssessmentDao();
         StudentCourseDao studentCourseDao = new StudentCourseDao();
 
-        // Get courses
+        // Get courses, student assessments and student courses (filter in jsp)
         ArrayList<Course> courses = courseDao.getAllCourses();
-
-        // Get student assessments
         ArrayList<StudentAssessment> assessments = studentAssessmentDao.getAllStudentAssessments();
-
-        // Get registered course
         ArrayList<StudentCourse> studentCourses = studentCourseDao.getAllStudentCourses();
 
+        // Set into session
         session.setAttribute("courses", courses);
         session.setAttribute("studentAssessments", assessments);
         session.setAttribute("studentCourses", studentCourses);

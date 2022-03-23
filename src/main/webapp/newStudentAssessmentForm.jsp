@@ -1,4 +1,4 @@
-<%@ page import="com.example.web.models.User" %>
+<%@ page import="com.example.models.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,6 +25,11 @@
       <span class="navbar-text">
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
+    </div>
+    <div>
+      <form class="mb-0" action="LogoutUser" method="post">
+        <button type="submit" class="btn btn-light">Log Out</button>
+      </form>
     </div>
   </div>
 </nav>

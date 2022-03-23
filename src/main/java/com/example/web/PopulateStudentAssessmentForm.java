@@ -1,11 +1,7 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.dao.StudentAssessmentDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.StudentAssessment;
+import com.example.dao.StudentAssessmentDao;
+import com.example.models.StudentAssessment;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,10 +24,11 @@ public class PopulateStudentAssessmentForm extends HttpServlet {
         HttpSession session = request.getSession();
         StudentAssessmentDao studentAssessmentDao = new StudentAssessmentDao();
 
+        // Get specified student assessment
         int id = Integer.parseInt(request.getParameter("id"));
-
         StudentAssessment studentAssessment = studentAssessmentDao.getStudentAssessment(id);
 
+        // Set into session
         session.setAttribute("currentAssessment", studentAssessment);
 
         response.sendRedirect(request.getContextPath() + "/editStudentAssessmentForm.jsp");

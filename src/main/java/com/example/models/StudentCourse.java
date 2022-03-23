@@ -1,4 +1,4 @@
-package com.example.web.models;
+package com.example.models;
 
 public class StudentCourse {
     private int id;

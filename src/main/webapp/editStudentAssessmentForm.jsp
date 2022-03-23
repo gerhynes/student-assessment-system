@@ -1,5 +1,5 @@
-<%@ page import="com.example.web.models.User" %>
-<%@ page import="com.example.web.models.StudentAssessment" %>
+<%@ page import="com.example.models.User" %>
+<%@ page import="com.example.models.StudentAssessment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,12 +28,24 @@
             <% out.print("(" + user.getRole() + ")"); %>
             </span>
         </div>
+        <div>
+            <form class="mb-0" action="LogoutUser" method="post">
+                <button type="submit" class="btn btn-light">Log Out</button>
+            </form>
+        </div>
     </div>
 </nav>
 <div class="container">
     <div class="row mb-5">
         <div class="col-md-6 mx-auto">
             <h2>Edit Student Assessment</h2>
+            <div class="alert alert-info d-flex align-items-center" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-info-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+                <span>Enter 0 for unused/not yet marked assessments.</span>
+            </div>
             <form action="UpdateStudentAssessment" method="post">
                 <input type="hidden" name="id" value="<%= assessment.getId() %>"/>
                 <div class="mb-3">
@@ -89,12 +101,12 @@
                            value="<%= assessment.getAssignment3() %>" id="assignment3" required="required"/>
                 </div>
                 <div class="mb-3">
-                    <label for="midterm">Midterm Exam Must be 30%</label>
+                    <label for="midterm">Midterm Exam - Worth 30% of overall grade</label>
                     <input class="form-control" name="midterm" type="text"
                            value="<%= assessment.getMidterm() %>" id="midterm" required="required"/>
                 </div>
                 <div class="mb-3">
-                    <label for="finalExam">Final Exam Must be 50%</label>
+                    <label for="finalExam">Final Exam - Worth 50% of total grade</label>
                     <input class="form-control" name="finalExam" type="text"
                            value="<%= assessment.getFinalExam() %>" id="finalExam" required="required"/>
                 </div>

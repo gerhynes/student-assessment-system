@@ -1,10 +1,9 @@
 package com.example.web;
 
-import com.example.web.dao.AssessmentCriteriaDao;
-import com.example.web.dao.CourseDao;
-import com.example.web.models.AssessmentCriteria;
-import com.example.web.models.Course;
-import com.example.web.models.User;
+import com.example.dao.AssessmentCriteriaDao;
+import com.example.dao.CourseDao;
+import com.example.models.AssessmentCriteria;
+import com.example.models.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class CreateAssessmentCriteria extends HttpServlet {
         AssessmentCriteriaDao assessmentCriteriaDao = new AssessmentCriteriaDao();
         CourseDao courseDao = new CourseDao();
 
-        // Get form inputs and use to update assessment criteria
+        // Get form inputs and use to create assessment criteria
         int courseId = Integer.parseInt(request.getParameter("courseId"));
         int quiz1 = Integer.parseInt(request.getParameter("quiz1"));
         int quiz2 = Integer.parseInt(request.getParameter("quiz2"));
@@ -48,9 +47,7 @@ public class CreateAssessmentCriteria extends HttpServlet {
 
         // Update course with new assessmentId
         Course course = courseDao.getCourse(courseId);
-
         ArrayList<AssessmentCriteria> criteria = assessmentCriteriaDao.getAllAssessmentCriteria();
-
         for (AssessmentCriteria singleCriteria : criteria) {
             if (singleCriteria.getCourseId() == course.getId()) {
                 course.setAssessmentId(singleCriteria.getId());
@@ -58,7 +55,7 @@ public class CreateAssessmentCriteria extends HttpServlet {
             }
         }
 
-        // Set updated criteria into session
+        // Set updated criteria and courses into session
         session.setAttribute("criteria", assessmentCriteriaDao.getAllAssessmentCriteria());
         session.setAttribute("courses", courseDao.getAllCourses());
 

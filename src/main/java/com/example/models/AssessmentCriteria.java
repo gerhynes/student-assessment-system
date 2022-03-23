@@ -1,8 +1,7 @@
-package com.example.web.models;
+package com.example.models;
 
-public class StudentAssessment {
+public class AssessmentCriteria {
     private int id;
-    private int studentId;
     private int courseId;
     private int quiz1;
     private int quiz2;
@@ -15,8 +14,7 @@ public class StudentAssessment {
     private int midterm;
     private int finalExam;
 
-    public StudentAssessment(int studentId, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
-        this.studentId = studentId;
+    public AssessmentCriteria(int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
         this.courseId = courseId;
         this.quiz1 = quiz1;
         this.quiz2 = quiz2;
@@ -30,9 +28,8 @@ public class StudentAssessment {
         this.finalExam = finalExam;
     }
 
-    public StudentAssessment(int id, int studentId, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
+    public AssessmentCriteria(int id, int courseId, int quiz1, int quiz2, int quiz3, int quiz4, int quiz5, int assignment1, int assignment2, int assignment3, int midterm, int finalExam) {
         this.id = id;
-        this.studentId = studentId;
         this.courseId = courseId;
         this.quiz1 = quiz1;
         this.quiz2 = quiz2;
@@ -52,14 +49,6 @@ public class StudentAssessment {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
     }
 
     public int getCourseId() {
@@ -152,9 +141,8 @@ public class StudentAssessment {
 
     @Override
     public String toString() {
-        return "StudentAssessment " +
+        return "AssessmentCriteria " +
                 "id=" + id +
-                ", studentId=" + studentId +
                 ", courseId=" + courseId +
                 ", quiz1=" + quiz1 +
                 ", quiz2=" + quiz2 +

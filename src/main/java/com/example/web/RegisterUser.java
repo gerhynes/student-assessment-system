@@ -1,8 +1,8 @@
 package com.example.web;
 
-import com.example.web.dao.UserDao;
-import com.example.web.models.User;
-import com.example.web.utils.PasswordUtils;
+import com.example.dao.UserDao;
+import com.example.models.User;
+import com.example.utils.PasswordUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +27,7 @@ public class RegisterUser extends HttpServlet {
         UserDao userDao = new UserDao();
         PasswordUtils passwordUtils = new PasswordUtils();
 
+        // Get user details from params
         String name = request.getParameter("name");
         String role = request.getParameter("role");
         String password = request.getParameter("password");
@@ -42,8 +43,10 @@ public class RegisterUser extends HttpServlet {
         // Run user through validation to get user's id from database
         User validUser = userDao.validateUser(name, password);
 
+        // Set user into session
         session.setAttribute("user", validUser);
 
+        // Redirect based off user's role
         if (validUser.getRole().equals("admin")) {
             // Call PopulateAdminDashboardServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateAdminDashboard");

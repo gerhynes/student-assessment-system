@@ -1,9 +1,5 @@
 package com.example.web;
 
-import com.example.web.dao.UserDao;
-import com.example.web.models.User;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +20,10 @@ public class LogoutUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
+        // Remove user from session
         session.setAttribute("user", null);
 
+        // Redirect to login
         response.sendRedirect(request.getContextPath() + "/login.jsp");
     }
 }

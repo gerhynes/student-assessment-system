@@ -1,10 +1,9 @@
-package com.example.web.dao;
+package com.example.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.example.web.models.Course;
-import com.example.web.models.StudentCourse;
+import com.example.models.StudentCourse;
 
 public class StudentCourseDao {
 
@@ -12,8 +11,8 @@ public class StudentCourseDao {
         Connection connection = null;
         String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
         String dbUser = "root";
-        String dbPassword = "thomasmerton";
-        // String dbPassword = "rootpasswordgiven";
+//        String dbPassword = "thomasmerton";
+        String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -74,8 +73,8 @@ public class StudentCourseDao {
         try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             int id = studentCourse.getId();
-           int studentId = studentCourse.getStudentId();
-           int courseId = studentCourse.getCourseId();
+            int studentId = studentCourse.getStudentId();
+            int courseId = studentCourse.getCourseId();
             rowUpdated = statement.executeUpdate("UPDATE student_courses SET id = " + id +
                     ", student_id = " + studentId +
                     ", course_id = " + courseId +
