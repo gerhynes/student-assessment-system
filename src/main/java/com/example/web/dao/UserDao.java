@@ -10,9 +10,13 @@ public class UserDao {
 
     protected Connection getConnection() {
         Connection connection = null;
+        String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
+        String dbUser = "root";
+        String dbPassword = "thomasmerton";
+        // String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_assessment", "root", "thomasmerton");
+            connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (Exception e) {
             e.printStackTrace();
         }

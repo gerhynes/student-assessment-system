@@ -22,7 +22,8 @@ public class RegisterUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDao dao = new UserDao();
+        HttpSession session = request.getSession();
+        UserDao userDao = new UserDao();
 
         String name = request.getParameter("name");
         String role = request.getParameter("role");
@@ -30,21 +31,22 @@ public class RegisterUser extends HttpServlet {
         String password = request.getParameter("password");
 
         User user = new User(name, role, password);
+        userDao.createUser(user);
 
-        dao.createUser(user);
+        // Run user through validation to get user's id from database
+        User validUser = userDao.validateUser(name, password);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+        session.setAttribute("user", validUser);
 
-        if (user.getRole().equals("admin")) {
+        if (validUser.getRole().equals("admin")) {
             // Call PopulateAdminDashboardServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateAdminDashboard");
             dispatcher.forward(request, response);
-        } else if (user.getRole().equals("instructor")) {
+        } else if (validUser.getRole().equals("instructor")) {
             // Call PopulateInstructorDashboardServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateInstructorDashboard");
             dispatcher.forward(request, response);
-        } else if (user.getRole().equals("student")) {
+        } else if (validUser.getRole().equals("student")) {
             // Call PopulateStudentDashboardServlet
             RequestDispatcher dispatcher = request.getRequestDispatcher("PopulateStudentDashboard");
             dispatcher.forward(request, response);

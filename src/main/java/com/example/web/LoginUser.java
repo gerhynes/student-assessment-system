@@ -22,6 +22,7 @@ public class LoginUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         UserDao userDao = new UserDao();
 
         String username = request.getParameter("name");
@@ -29,7 +30,6 @@ public class LoginUser extends HttpServlet {
 
         User validUser = userDao.validateUser(username, password);
 
-        HttpSession session = request.getSession();
         session.setAttribute("user", validUser);
 
         if (validUser.getRole().equals("admin")) {

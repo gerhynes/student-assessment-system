@@ -13,9 +13,13 @@ public class AssessmentCriteriaDao {
 
     protected Connection getConnection() {
         Connection connection = null;
+        String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
+        String dbUser = "root";
+        String dbPassword = "thomasmerton";
+        // String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/student_assessment", "root", "thomasmerton");
+            connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,8 +135,7 @@ public class AssessmentCriteriaDao {
             int midterm = assessmentCriteria.getMidterm();
             int finalExam = assessmentCriteria.getFinalExam();
 
-            rowUpdated = statement.executeUpdate("UPDATE assessment_criteria SET id = " + id +
-                    ", course_id = " + courseId +
+            rowUpdated = statement.executeUpdate("UPDATE assessment_criteria SET course_id = " + courseId +
                     ", quiz1 = " + quiz1 +
                     ", quiz2 = " + quiz2 +
                     ", quiz3 = " + quiz3 +

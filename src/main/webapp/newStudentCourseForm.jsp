@@ -21,6 +21,9 @@
         </h1>
         <div>
             <span class="navbar-text">
+            <% out.print("ID: " + user.getId() + ""); %>
+            </span>
+            <span class="navbar-text">
             <% out.print(user.getName()); %>
             </span>
             <span class="navbar-text">
@@ -36,7 +39,7 @@
             <form action="CreateStudentCourse" method="post">
                 <div class="mb-3">
                     <label for="studentId">Student ID</label>
-                    <input class="form-control" name="studentId" type="text" id="studentId" required="required"/>
+                    <input class="form-control" name="studentId" type="text" id="studentId" value=\"<%= user.getId() %>"\"" required="required"/>
                 </div>
                 <div class="mb-3">
                     <label for="courseId" class="form-label">Course</label>
@@ -44,7 +47,7 @@
                         <option selected>Select a Course</option>
                         <%
                             for (Course singleCourse : courses) {
-                                out.print("<option value=\"" + singleCourse.getId() + "\">" + singleCourse.getName() + "</option>");
+                                out.print("<option value=\"" + singleCourse.getId() + "\">" + singleCourse.getCourseCode() + " " + singleCourse.getName() + "</option>");
                             }
                         %>
                     </select>

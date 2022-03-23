@@ -15,8 +15,13 @@
 %>
 <nav class="navbar navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/student-assessment-system">Student Assessment</a>
+        <h1>
+            <a class="navbar-brand" href="/student-assessment-system">Student Assessment</a>
+        </h1>
         <div>
+            <span class="navbar-text">
+            <% out.print("ID: " + user.getId() + ""); %>
+            </span>
             <span class="navbar-text">
             <% out.print(user.getName()); %>
             </span>

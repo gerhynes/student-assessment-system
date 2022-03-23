@@ -17,6 +17,9 @@
         </h1>
         <div>
             <span class="navbar-text">
+            <% out.print("ID: " + user.getId() + ""); %>
+            </span>
+            <span class="navbar-text">
             <% out.print(user.getName()); %>
             </span>
             <span class="navbar-text">
