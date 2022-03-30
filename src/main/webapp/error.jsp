@@ -7,10 +7,9 @@
 </head>
 <body>
 <div class="container text-center mt-5">
-    <h1>Something went wrong</h1>
-    <h2>Message <%=exception.getMessage()%></h2>
-    <h2>Class <%=exception.getClass()%></h2>
-    <h2>Stack Trace <%=exception.getStackTrace()%></h2>
+    <h1 class="mb-3">Uh oh, something went wrong. Sorry about that!</h1>
+    <h2 class="mb-3"><a href="/student-assessment-system">Go back to the hompage</a></h2>
+    <h2 class="mb-3">Check the command line for a helpful error message and a full stacktrace. 👇</h2>
 </div>
 </body>
 </html>

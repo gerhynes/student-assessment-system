@@ -140,6 +140,10 @@
                         for (AssessmentCriteria singleCriteria : criteria) {
                             for (Course singleCourse : courses) {
                                 if (singleCriteria.getCourseId() == singleCourse.getId() && singleCourse.getInstructorId() == user.getId()) {
+                                    int total = singleCriteria.getQuiz1() + singleCriteria.getQuiz2() + singleCriteria.getQuiz3()
+                                            + singleCriteria.getQuiz4() + singleCriteria.getQuiz5()
+                                            + singleCriteria.getAssignment1() + singleCriteria.getAssignment2() + singleCriteria.getAssignment3()
+                                            + singleCriteria.getMidterm() + singleCriteria.getFinalExam();
                                     out.print("<tr>\n" +
                                             "<th scope=\"row\">" + singleCriteria.getCourseId() + "</th>\n" +
                                             "<td>" + singleCriteria.getId() + "</td>\n" +
@@ -153,7 +157,7 @@
                                             "<td>" + singleCriteria.getAssignment3() + "</td>\n" +
                                             "<td>" + singleCriteria.getMidterm() + "%</td>\n" +
                                             "<td>" + singleCriteria.getFinalExam() + "%</td>\n" +
-                                            "<td>100%</td>" +
+                                            "<td>" + total + "%</td>" +
                                             "<td>\n" +
                                             "<form action=\"PopulateAssessmentCriteriaForm\" method=\"post\">" +
                                             "<input type=\"hidden\" name=\"id\" value=\"" + singleCriteria.getId() + "\"/>" +
@@ -183,71 +187,73 @@
             <div class="mb-3">
                 <a href="newStudentAssessmentForm.jsp" class="btn btn-primary">Create Student Assessment</a>
             </div>
-            <table class="table table-bordered table-responsive">
-                <thead>
-                <tr>
-                    <th scope="col" class="align-top">Course ID</th>
-                    <th scope="col" class="align-top">Student ID</th>
-                    <th scope="col" colspan="5" class="align-top">Quizzes</th>
-                    <th scope="col" colspan="3" class="align-top">Assignments</th>
-                    <th scope="col" class="align-top">Midterm Exam</th>
-                    <th scope="col" class="align-top">Final Exam</th>
-                    <th scope="col" class="align-top">Total</th>
-                    <th scope="col" class="align-top">Edit</th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Q1</td>
-                    <td>Q2</td>
-                    <td>Q3</td>
-                    <td>Q4</td>
-                    <td>Q5</td>
-                    <td>A1</td>
-                    <td>A2</td>
-                    <td>A3</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    for (StudentAssessment singleAssessment : assessments) {
-                        for (Course singleCourse : courses) {
-                            if (singleAssessment.getCourseId() == singleCourse.getId() && singleCourse.getInstructorId() == user.getId()) {
-                                int total = singleAssessment.getQuiz1() + singleAssessment.getQuiz2() + singleAssessment.getQuiz3()
-                                        + singleAssessment.getQuiz4() + singleAssessment.getQuiz5()
-                                        + singleAssessment.getAssignment1() + singleAssessment.getAssignment2() + singleAssessment.getAssignment3()
-                                        + singleAssessment.getMidterm() + singleAssessment.getFinalExam();
-                                out.print("<tr>\n" +
-                                        "<th scope=\"row\">" + singleAssessment.getCourseId() + "</th>\n" +
-                                        "<td>" + singleAssessment.getStudentId() + "</td>\n" +
-                                        "<td>" + singleAssessment.getQuiz1() + "</td>\n" +
-                                        "<td>" + singleAssessment.getQuiz2() + "</td>\n" +
-                                        "<td>" + singleAssessment.getQuiz3() + "</td>\n" +
-                                        "<td>" + singleAssessment.getQuiz4() + "</td>\n" +
-                                        "<td>" + singleAssessment.getQuiz5() + "</td>\n" +
-                                        "<td>" + singleAssessment.getAssignment1() + "</td>\n" +
-                                        "<td>" + singleAssessment.getAssignment2() + "</td>\n" +
-                                        "<td>" + singleAssessment.getAssignment3() + "</td>\n" +
-                                        "<td>" + singleAssessment.getMidterm() + "</td>\n" +
-                                        "<td>" + singleAssessment.getFinalExam() + "</td>\n" +
-                                        "<td>" + total + "</td>" +
-                                        "<td>\n" +
-                                        "<form action=\"PopulateStudentAssessmentForm\" method=\"post\">" +
-                                        "<input type=\"hidden\" name=\"id\" value=\"" + singleAssessment.getId() + "\"/>" +
-                                        "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Edit</button>\n" +
-                                        "</form>" +
-                                        "</td>\n" +
-                                        "</tr>");
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="align-top">Course ID</th>
+                        <th scope="col" class="align-top">Student ID</th>
+                        <th scope="col" colspan="5" class="align-top">Quizzes</th>
+                        <th scope="col" colspan="3" class="align-top">Assignments</th>
+                        <th scope="col" class="align-top">Midterm Exam</th>
+                        <th scope="col" class="align-top">Final Exam</th>
+                        <th scope="col" class="align-top">Total</th>
+                        <th scope="col" class="align-top">Edit</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Q1</td>
+                        <td>Q2</td>
+                        <td>Q3</td>
+                        <td>Q4</td>
+                        <td>Q5</td>
+                        <td>A1</td>
+                        <td>A2</td>
+                        <td>A3</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (StudentAssessment singleAssessment : assessments) {
+                            for (Course singleCourse : courses) {
+                                if (singleAssessment.getCourseId() == singleCourse.getId() && singleCourse.getInstructorId() == user.getId()) {
+                                    int total = singleAssessment.getQuiz1() + singleAssessment.getQuiz2() + singleAssessment.getQuiz3()
+                                            + singleAssessment.getQuiz4() + singleAssessment.getQuiz5()
+                                            + singleAssessment.getAssignment1() + singleAssessment.getAssignment2() + singleAssessment.getAssignment3()
+                                            + singleAssessment.getMidterm() + singleAssessment.getFinalExam();
+                                    out.print("<tr>\n" +
+                                            "<th scope=\"row\">" + singleAssessment.getCourseId() + "</th>\n" +
+                                            "<td>" + singleAssessment.getStudentId() + "</td>\n" +
+                                            "<td>" + singleAssessment.getQuiz1() + "</td>\n" +
+                                            "<td>" + singleAssessment.getQuiz2() + "</td>\n" +
+                                            "<td>" + singleAssessment.getQuiz3() + "</td>\n" +
+                                            "<td>" + singleAssessment.getQuiz4() + "</td>\n" +
+                                            "<td>" + singleAssessment.getQuiz5() + "</td>\n" +
+                                            "<td>" + singleAssessment.getAssignment1() + "</td>\n" +
+                                            "<td>" + singleAssessment.getAssignment2() + "</td>\n" +
+                                            "<td>" + singleAssessment.getAssignment3() + "</td>\n" +
+                                            "<td>" + singleAssessment.getMidterm() + "</td>\n" +
+                                            "<td>" + singleAssessment.getFinalExam() + "</td>\n" +
+                                            "<td>" + total + "</td>" +
+                                            "<td>\n" +
+                                            "<form action=\"PopulateStudentAssessmentForm\" method=\"post\">" +
+                                            "<input type=\"hidden\" name=\"id\" value=\"" + singleAssessment.getId() + "\"/>" +
+                                            "<button class=\"btn btn-sm btn-primary\" type=\"submit\">Edit</button>\n" +
+                                            "</form>" +
+                                            "</td>" +
+                                            "</tr>");
+                                }
                             }
                         }
-                    }
-                %>
-                </tbody>
-            </table>
+                    %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 </div>

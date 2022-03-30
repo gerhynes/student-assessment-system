@@ -12,12 +12,12 @@ public class UserDao {
         Connection connection = null;
         String dbUrl = "jdbc:mysql://localhost:3306/student_assessment";
         String dbUser = "root";
-//        String dbPassword = "thomasmerton";
         String dbPassword = "rootpasswordgiven";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
         } catch (Exception e) {
+            System.out.println("This application attempts to connect to the database using the default MySQl root password.\nIf you are using your own password, update the dbPassword field in the DAO classes.");
             e.printStackTrace();
         }
         return connection;
