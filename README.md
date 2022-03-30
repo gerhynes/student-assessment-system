@@ -14,4 +14,4 @@ Run the `seedDB.sql` script to create the `student_assessment` database and popu
 
 If you encounter a SQLException while running locally, in the DAO classes set `dbPassword` to your local MySQL password.
 
-[Screenshot of instructor dashboard](./dashboard-screenshot.png)
+![Screenshot of instructor dashboard](./dashboard-screenshot.png)
